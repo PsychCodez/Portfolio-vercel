@@ -8,8 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
     <style>
         :root {
             --bg-color: #1a1a1a;
@@ -18,8 +16,6 @@
             --card-bg: #252525;
             --border-color: #333333;
             --header-bg: rgba(26, 26, 26, 0.85);
-            --success-color: #28a745;
-            --error-color: #dc3545;
         }
 
         * {
@@ -106,6 +102,11 @@
             transform: translateY(0);
         }
 
+        h1, h2, h3 {
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
         h2 {
             font-size: 2rem;
             color: var(--text-color);
@@ -115,6 +116,7 @@
             margin-bottom: 2rem;
         }
 
+        /* Hero Section */
         #hero {
             height: 100vh;
             display: flex;
@@ -133,6 +135,50 @@
             color: var(--text-color);
         }
 
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.5rem;
+            background-color: var(--primary-color);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* About Section */
+        #about .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        #about p {
+            margin-bottom: 1rem;
+        }
+
+        #about ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        #about ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 0.5rem;
+        }
+
+        #about ul li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        /* Experience & Projects Section */
         .grid-layout {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -154,17 +200,98 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
-        .card h3 { color: var(--primary-color); }
-        .card .company, .card .tech-stack { font-style: italic; margin-bottom: 1rem; color: #aaa; font-size: 0.9rem; }
-        .card .description { flex-grow: 1; }
-        .card ul { list-style-type: none; padding-left: 0.5rem; flex-grow: 1; margin-bottom: 1rem; }
-        .card ul li { position: relative; padding-left: 20px; margin-bottom: 0.5rem; }
-        .card ul li::before { content: '»'; position: absolute; left: 0; color: var(--primary-color); }
-        .project-links { margin-top: auto; }
-        .project-links a { color: var(--text-color); text-decoration: none; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 5px; margin-right: 0.5rem; transition: background-color 0.3s, color 0.3s; }
-        .project-links a:hover { background-color: var(--primary-color); color: var(--bg-color); }
+        .card h3 {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
 
-        /* --- NEW CREATIVE FORM STYLES --- */
+        .card .company, .card .tech-stack {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .card .description {
+            flex-grow: 1;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding-left: 0.5rem;
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card ul li::before {
+            content: '»';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        
+        .project-links {
+            margin-top: auto; /* Pushes links to the bottom */
+        }
+
+        .project-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .project-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        /* Skills & Education */
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        #skills ul {
+            list-style-type: none;
+        }
+        
+        #education-card {
+            margin-top: 2rem;
+            padding: 2rem;
+        }
+
+        /* Contact */
+        #contact {
+            text-align: center;
+        }
+        
+        #contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-links a:hover {
+            color: var(--primary-color);
+        }
         #contact .contact-container { max-width: 700px; margin: auto; }
         #contact-form {
             background: var(--card-bg);
@@ -236,8 +363,13 @@
         #form-status { margin-top: 1.5rem; text-align: center; font-weight: 500; height: 1rem; }
         .success { color: var(--success-color); }
         .error { color: var(--error-color); }
-        
-        footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #888; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
     </style>
 </head>
 <body>
@@ -259,39 +391,260 @@
     </header>
 
     <main>
+        <section id="hero">
+            <div class="container">
+                <h1>G. Dhanush Raghavendra Reddy.</h1>
+                <p class="subtitle"><span id="typing-text"></span><span class="typing-cursor"></span></p>
+            </div>
+        </section>
+
+        <section id="about" class="section-hidden">
+            <div class="container">
+                <h2>// About Me</h2>
+                <div class="about-content">
+                    <p>Hi, I'm Dhanush Reddy — a final-year Computer Science and Engineering student with a deep-rooted curiosity for how systems work under the hood. I'm not someone who’s confined to a single lane — I enjoy stepping outside my comfort zone and exploring new domains, which is why my project list is diverse. But it’s not a case of “jack of all trades, master of none” — I’m driven by a genuine desire to understand the why and how behind everything I build.</p>
+                    <p>What captivates me most isn’t just the final product, but the work behind the beauty — the invisible logic, infrastructure, and intelligence that powers great technology. Whether it’s how a machine makes a decision, how a containerized system handles failure, or how data flows through a real-time pipeline — I’m always peeling back the layers to learn more.</p>
+                    <p>While I’ve dabbled across multiple areas, I find myself increasingly drawn toward AI and Machine Learning. I see immense potential there — both in terms of impact and innovation — and I'm working toward carving out something meaningful in that space.</p>
+                    <div>
+                        <p>Some things I value deeply:</p>
+                        <ul>
+                            <li>Curiosity over complacency — I'm always asking questions and diving deep</li>
+                            <li>Learning by building — I prefer hands-on exploration to passive consumption</li>
+                            <li>Systems thinking — I like connecting the dots across disciplines</li>
+                            <li>Clarity in complexity — I enjoy simplifying hard problems through logic and structure</li>
+                        </ul>
+                    </div>
+                    <p>If there’s one thing that defines me, it’s this: I love knowing how things work — not just what they do.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section-hidden">
+            <div class="container">
+                <h2>// Experience</h2>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h3>Software Engineering Intern</h3>
+                        <p class="company">Razorpay, Bangalore (06/24 - 07/24)</p>
+                        <ul class="description">
+                            <li>Worked on internal engineering tools to enhance system observability, reporting, and operational workflows for improved team efficiency[cite: 24].</li>
+                            <li>Utilized technologies like React.js, Python, and internal Razorpay APIs to build responsive, real-time visualizations[cite: 25].</li>
+                            <li>Integrated access control and smart logging mechanisms while maintaining compliance with internal security protocols[cite: 26].</li>
+                            <li>Participated in an agile development environment, including team stand-ups, design reviews, and sprint planning[cite: 27].</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Research Intern</h3>
+                        <p class="company">RAPID (Research in AI for Progressive Interdisciplinary Developments) (06/24 - 07/24)</p>
+                        <ul class="description">
+                            <li>Researched the application of Machine Learning and Sentiment Analysis, achieving a stock market prediction accuracy between 82.5% and 89%[cite: 16].</li>
+                            <li>Outperformed existing models by approximately 9%[cite: 16].</li>
+                            <li>Co-authored a draft research paper titled "Revolutionizing Stock Market Predictions with Historical and Sentiment Analysis", ready for submission to a conference with an acceptance rate under 30%[cite: 19, 20].</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-hidden">
+            <div class="container">
+                <h2>// Featured Projects</h2>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h3>AI-Powered Stock Forecasting System [cite: 29]</h3>
+                        <div class="description">
+                            <p><strong>The Problem:</strong> Accurately forecasting stock prices is difficult due to volatile market data and the influence of public sentiment.</p>
+                            <ul>
+                                <li>Built a custom Transformer encoder for time series forecasting[cite: 30].</li>
+                                <li>Combined historical prices and sentiment scores for multi-modal input[cite: 31].</li>
+                                <li>Fine-tuned Flan-T5 to output confidence scores and recommendations[cite: 32].</li>
+                                <li>Outperformed LSTM, GRU, and vanilla Transformers in accuracy[cite: 32].</li>
+                            </ul>
+                        </div>
+                        <p class="tech-stack">Tech: Python, TensorFlow, Transformers, Flan-T5, PEFT</p>
+                        <div class="project-links">
+                            <a href="https://github.com/PsychCodez/..." target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>AI-K8s-Deployment-Intelligence [cite: 33]</h3>
+                         <div class="description">
+                            <p><strong>The Problem:</strong> Manual Kubernetes deployment is complex, error-prone, and time-consuming.</p>
+                            <ul>
+                                <li>Automated manifest generation and DNS setup via API integrations[cite: 35].</li>
+                                <li>Enabled real-time deployment tracking with Socket.IO[cite: 36].</li>
+                                <li>Designed a 6-stage ML engine for analysis and validation[cite: 36].</li>
+                            </ul>
+                        </div>
+                        <p class="tech-stack">Tech: Python, Flask, Kubernetes, Spinnaker, AWS, Socket.IO</p>
+                        <div class="project-links">
+                            <a href="https://github.com/PsychCodez/..." target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>EmoStreams [cite: 37]</h3>
+                         <div class="description">
+                            <p><strong>The Problem:</strong> Engaging thousands of users simultaneously during a live event requires a high-throughput, low-latency data pipeline.</p>
+                            <ul>
+                                <li>Built a scalable Pub-Sub architecture using Kafka[cite: 39].</li>
+                                <li>Implemented Spark micro-batching for 2-second interval aggregation[cite: 40].</li>
+                                <li>Created an API for dynamic, seamless client registration[cite: 40].</li>
+                            </ul>
+                        </div>
+                        <p class="tech-stack">Tech: Kafka, Spark, Python, Pub-Sub Architecture</p>
+                        <div class="project-links">
+                            <a href="https://github.com/PsychCodez/..." target="_blank">GitHub</a>
+                            <a href="#" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 4rem;">// Latest from GitHub</h2>
+                <div class="grid-layout" id="github-projects">
+                    </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-hidden">
+            <div class="container">
+                <h2>// Skills & Education</h2>
+                <div class="skills-grid">
+                    <div>
+                        <h3>Technical Skills</h3>
+                        <ul>
+                            <li><b>Languages:</b> C, Python, HTML/CSS, C++, Javascript, R-programming, Socket Programming[cite: 11].</li>
+                            <li><b>Frameworks & Tools:</b> React.js, Node.js, Typescript, SQL, MongoDB, Hadoop, Git, VS Code[cite: 11].</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Soft Skills</h3>
+                        <ul>
+                            <li>Communication & Teamwork [cite: 11]</li>
+                            <li>Leadership & Initiative [cite: 11]</li>
+                            <li>Continuous Learning [cite: 11]</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card" id="education-card">
+                    <h3>Bachelor of Technology in Computer Science [cite: 6]</h3>
+                    <p class="company">PES University (Expected 2026) [cite: 6, 7]</p>
+                    <p><b>CGPA:</b> 8.99 [cite: 9]</p>
+                    <p><b>Relevant Coursework:</b> Data Structures, DBMS, Computer Networks, Operating Systems, Data Analytics, Big Data[cite: 8].</p>
+                </div>
+            </div>
+        </section>
+        
         <section id="contact" class="section-hidden">
-            <div class="container contact-container">
+            <div class="container">
                 <h2>// Get In Touch</h2>
-                <p style="text-align: center;">Have a question or want to work together? Run the command below.</p>
-
-                <form id="contact-form">
-                    <div class="form-group">
-                        <span class="prompt">&gt;</span>
-                        <input type="text" id="from_name" name="from_name" placeholder="enter_name" required>
-                    </div>
-                    <div class="form-group">
-                        <span class="prompt">&gt;</span>
-                        <input type="email" id="from_email" name="from_email" placeholder="enter_email" required>
-                    </div>
-                     <div class="form-group">
-                        <span class="prompt">&gt;</span>
-                        <textarea id="message" name="message" placeholder="type_message_here..." required></textarea>
-                    </div>
-
-                    <button type="submit" id="submit-btn">[ Execute ]</button>
-                    <p id="form-status"></p>
-                </form>
-
+                <p>I'm currently seeking new opportunities and am always open to a chat. Feel free to reach out.</p>
+                <div class="contact-links">
+                    <a href="mailto:itsmedrrg@gmail.com">itsmedrrg@gmail.com [cite: 4]</a>
+                    <a href="https://www.linkedin.com/in/dhanush-raghavendra" target="_blank">LinkedIn [cite: 3]</a>
+                    <a href="https://www.github.com/PsychCodez" target="_blank">GitHub [cite: 3]</a>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <span class="prompt">&gt;</span>
+                            <input type="text" id="from_name" name="from_name" placeholder="enter_name" required>
+                        </div>
+                        <div class="form-group">
+                            <span class="prompt">&gt;</span>
+                            <input type="email" id="from_email" name="from_email" placeholder="enter_email" required>
+                        </div>
+                         <div class="form-group">
+                            <span class="prompt">&gt;</span>
+                            <textarea id="message" name="message" placeholder="type_message_here..." required></textarea>
+                        </div>
+    
+                        <button type="submit" id="submit-btn">[ Execute ]</button>
+                        <p id="form-status"></p>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
     
     <footer>
-        <p>&copy; 2025 G. Dhanush Raghavendra Reddy.</p>
+        <p>&copy; 2025 G. Dhanush Raghavendra Reddy. Built with HTML, CSS, and a bit of JavaScript.</p>
     </footer>
 
     <script>
-        // --- Initialize EmailJS ---
+        // --- Typing effect ---
+        const typingText = document.getElementById('typing-text');
+        const text = "A student exploring the depth of systems and intelligence.";
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                typingText.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 70); // Adjust typing speed here
+            }
+        }
+        document.addEventListener('DOMContentLoaded', type);
+
+        // --- Fade-in on Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const hiddenElements = document.querySelectorAll('.section-hidden');
+        hiddenElements.forEach(el => observer.observe(el));
+
+        // --- GitHub Repo Fetching ---
+        const githubContainer = document.getElementById('github-projects');
+        const username = 'PsychCodez';
+
+        async function fetchRepos() {
+            githubContainer.innerHTML = '<p>Fetching latest projects from GitHub...</p>';
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&direction=desc`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const repos = await response.json();
+                
+                const reposToShow = repos.slice(0, 6); // Show latest 6 repos
+
+                if (reposToShow.length === 0) {
+                     githubContainer.innerHTML = '<p>No public projects found on GitHub.</p>';
+                     return;
+                }
+
+                githubContainer.innerHTML = ''; // Clear loading/error message
+                
+                reposToShow.forEach(repo => {
+                    const projectCard = document.createElement('div');
+                    projectCard.classList.add('card');
+                    projectCard.innerHTML = `
+                        <h3>${repo.name}</h3>
+                        <div class="description">
+                            <p>${repo.description || 'No description provided.'}</p>
+                        </div>
+                        <p class="tech-stack">${repo.language ? `Primary Language: ${repo.language}` : ''}</p>
+                        <div class="project-links">
+                            <a href="${repo.html_url}" target="_blank">GitHub</a>
+                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Demo</a>` : ''}
+                        </div>
+                    `;
+                    githubContainer.appendChild(projectCard);
+                });
+
+            } catch (error) {
+                console.error("Failed to fetch GitHub repos:", error);
+                githubContainer.innerHTML = '<p>Could not fetch projects from GitHub. Please check the console.</p>';
+            }
+        }
+
+        fetchRepos();
         (function() {
             // YOUR PUBLIC KEY HAS BEEN ADDED
             emailjs.init({ publicKey: 'EVcJll0LrWVsxWBor' });
